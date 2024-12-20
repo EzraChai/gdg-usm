@@ -1,6 +1,7 @@
 {
   "tasks": {
-    "dev": "deno run --allow-read --allow-net --allow-env  main.ts"
+    "dev": "deno run --allow-read --allow-net --allow-env  main.ts",
+    "chat": "deno run --allow-read --allow-net --allow-env  chat.ts"
   },
   "imports": {
     "@google/generative-ai": "npm:@google/generative-ai@^0.21.0",
