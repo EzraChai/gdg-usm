@@ -28,6 +28,7 @@ if (import.meta.main) {
     },
   };
 
+
   const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
   // const prompt = "How many cookies there are";
   // const result = await model.generateContent([prompt, image]);

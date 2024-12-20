@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, type Content } from "@google/generative-ai";
 import "jsr:@std/dotenv/load";
 
 if (import.meta.main) {
@@ -6,9 +6,19 @@ if (import.meta.main) {
     Deno.env.get("GOOGLE_GEMINI_API_KEY") || ""
   );
 
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 40,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
+
   const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const chat = model.startChat();
+  const chat = model.startChat({
+    generationConfig,
+  });
 
   const encoder = new TextEncoder();
   while (true) {
