@@ -6,8 +6,18 @@ if (import.meta.main) {
     Deno.env.get("GOOGLE_GEMINI_API_KEY") || ""
   );
 
+  const data = await Deno.readFile("images.jpeg");
+  const base64 = btoa(String.fromCharCode(...new Uint8Array(data)));
+  const image = {
+    inlineData: {
+      data: base64,
+      mimeType: "image/jpeg",
+    },
+  };
+
   const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
-  const prompt = "What's Deno js";
-  const result = await model.generateContent(prompt);
+  const prompt =
+    ' How many cookies there are';
+  const result = await model.generateContent([prompt, image]);
   console.log(result.response.text());
 }
