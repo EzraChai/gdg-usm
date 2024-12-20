@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, type Content } from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import "jsr:@std/dotenv/load";
 
 if (import.meta.main) {
@@ -32,7 +32,4 @@ if (import.meta.main) {
       await Deno.stdout.write(data);
     }
   }
-
-  //   const result = await model.generateContent([prompt]);
-  //   console.log(result.response.text());
 }
